@@ -2,23 +2,27 @@
  <html>
    <head>
 
-     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css" type="text/css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/solarized_light.min.css" rel="stylesheet" />
+     
 
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/solarized-light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/java.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/languages/java.min.js"></script>
      <script>hljs.initHighlightingOnLoad();</script>
 
-      <style>
-        
+     
+
+     <style>
+       
 
 body 
 {
@@ -36,23 +40,13 @@ figcaption
   align-items: center;
 }
 
-.credits
-{
-  min-height:20px;
-}
 
 
-    </style>
+     </style>
 
-  </head>
+   </head>
 
   <body>
-
-    
-
-
-
-  <div class="ui container">
     
 
 <style>
@@ -74,17 +68,36 @@ h1
 {
   font-style:italic;
   font-size:130%;
-  border-bottom: thin solid black;
+  border-bottom:thin solid black;
 }
+
 h2
 {
   font-size:110%;
   border-bottom: thin solid black;
 }
+
 h3
 {
   font-size:100%;
   border-bottom: thin solid black;
+}
+
+body
+{
+  overflow-y: scroll;
+}
+
+.pushable > .pusher
+{
+  padding-bottom: 1.5rem;
+}
+
+.ui.segment.pushable
+{
+  margin: 0;
+  padding: 1rem 0;
+  overflow: visible;
 }
 
 
@@ -93,53 +106,79 @@ h3
 
 <div class="ui fixed top pointing inverted menu labmenu">
   <header class="header item">
+    <i id="toc" class="sitemap icon"></i>
     <a href="../index.html">
-      <i class="sitemap icon"></i>
-      Classes, Interfaces & Objects
+      Classes, Interfaces & Objects
     </a>
   </header>
   <div class="right tab-menu menu">
     
-      <a class="item" data-tab="Lab-02">
-        Lab-02
-      </a>
+    <a class="item" data-tab="Lab-02">
+      Lab-02
+    </a>
     
-      <a class="item" data-tab="01">
-        01
-      </a>
+    <a class="item" data-tab="01">
+      01
+    </a>
     
-      <a class="item" data-tab="02">
-        02
-      </a>
+    <a class="item" data-tab="02">
+      02
+    </a>
     
-      <a class="item" data-tab="03">
-        03
-      </a>
+    <a class="item" data-tab="03">
+      03
+    </a>
     
-      <a class="item" data-tab="04">
-        04
-      </a>
+    <a class="item" data-tab="04">
+      04
+    </a>
     
-      <a class="item" data-tab="05">
-        05
-      </a>
+    <a class="item" data-tab="05">
+      05
+    </a>
     
-      <a class="item" data-tab="06">
-        06
-      </a>
+    <a class="item" data-tab="06">
+      06
+    </a>
     
-      <a class="item" data-tab="Exercise">
-        Exercise
-      </a>
+    <a class="item" data-tab="Exercise">
+      Exercise
+    </a>
     
-    </div>
+    <a class="item" href="../../index.html">
+      <i class="home icon"></i>
+    </a>
+  </div>
 </div>
 
-<br><br>
-
-  
-  <div  class="ui tab segment lab" data-tab="Lab-02">
-    <h1>Debugging in Eclipse</h1>
+<div class="ui segment pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    
+      
+        <a class="item" href="../../topic01/book-1/index.html">
+          Lab-01
+        </a>
+      
+    
+      
+        <a class="active item" href="../../topic01/book-2/index.html">
+          Lab-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01/book-3/index.html">
+          Lab-03
+        </a>
+      
+    
+  </div>
+  <div class="pusher" tabindex="-1">
+    <div class="ui basic segment">
+      <br>
+      
+      <div  class="ui tab segment lab" data-tab="Lab-02">
+        <h1>Debugging in Eclipse</h1>
 <ul>
 <li>Understand workspaces in Eclipse</li>
 <li>Open the Debug Perspective in Eclipse.</li>
@@ -149,10 +188,10 @@ h3
 <li>View variable values</li>
 </ul>
 
-  </div>
- 
-  <div  class="ui tab segment lab" data-tab="01">
-    <h1>Sample Program</h1>
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="01">
+        <h1>Sample Program</h1>
 <p>Create a new project called Lab2.</p>
 <p>Create a new package called <strong>algorithms</strong> in the new project.</p>
 <p>Put the following sample program into the algorithms package in Lab2.</p>
@@ -189,18 +228,18 @@ public class SampleProgram {
 <p>Select the Project tab and add the previous algorithms project as shown below. Now your code should compile correctly.(you need to have lab 1 complete)</p>
 <p><img src="img/00.png" alt=""></p>
 
-  </div>
- 
-  <div  class="ui tab segment lab" data-tab="02">
-    <h1>The Debug Perspective</h1>
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="02">
+        <h1>The Debug Perspective</h1>
 <p>Switch to the debug perspective by clicking on the  icon in the top-right corner of the Eclipse window.</p>
 <p>Select Debug from the list of perspectives.</p>
 <p><img src="img/01.png" alt=""></p>
 
-  </div>
- 
-  <div  class="ui tab segment lab" data-tab="03">
-    <h1>Suspending, Resuming and Terminating</h1>
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="03">
+        <h1>Suspending, Resuming and Terminating</h1>
 <p>Return to the Java perspective and open SampleProgram.java in the program editor</p>
 <p>Select <code>Run-&gt;Debug as-&gt;Java Application</code></p>
 <p>You should see the program printing to the console:</p>
@@ -210,10 +249,10 @@ public class SampleProgram {
 <p>Click on Suspend (the yellow vertical lines) and Resume (yellow bar and green triangle) to suspend and resume program execution. Observe what happens. </p>
 <p>Finally, click the Terminate button(red square) to stop execution.</p>
 
-  </div>
- 
-  <div  class="ui tab segment lab" data-tab="04">
-    <h1>Break Points</h1>
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="04">
+        <h1>Break Points</h1>
 <p>You can use break points to suspend execution at a particular line in your code. Set a break point by double clicking in the grey bar beside the first call to System.out.println as shown below.</p>
 <p><img src="img/03.png" alt=""></p>
 <p>Run the program in Debug as before. Execution will automatically suspend just before the breakpoint you have set.</p>
@@ -226,10 +265,10 @@ public class SampleProgram {
 <p><img src="img/05.png" alt=""></p>
 <p>Now resume the program again. You should now notice this checkpoint is ignored.</p>
 
-  </div>
- 
-  <div  class="ui tab segment lab" data-tab="05">
-    <h1>Stepping through code</h1>
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="05">
+        <h1>Stepping through code</h1>
 <p>You may want more control over the execution of a program to really understand what’s going on in the code.</p>
 <p>Terminate your program if it is still running</p>
 <p>Re-activate the breakpoint in the innerloop() method and run the program in Debug mode again. 
@@ -248,10 +287,10 @@ When the program suspends at the first break point, find the following buttons:<
 <li>try this out by returning from the innerloop() method</li>
 </ul>
 
-  </div>
- 
-  <div  class="ui tab segment lab" data-tab="06">
-    <h1>Variables</h1>
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="06">
+        <h1>Variables</h1>
 <p>As before, run the program in debug mode and use Step Over to bring execution to the innerloop(...) method call.</p>
 <p>Move the mouse pointer over one of the variables. It’s current value will be shown in a pop-up window</p>
 <p><img src="img/07.png" alt=""></p>
@@ -259,10 +298,10 @@ When the program suspends at the first break point, find the following buttons:<
 <p><img src="img/08.png" alt=""></p>
 <p>Step into the innerloop() method and monitor the changes to i and j as you step through the code </p>
 
-  </div>
- 
-  <div  class="ui tab segment lab" data-tab="Exercise">
-    <h1>Debug Practice</h1>
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="Exercise">
+        <h1>Debug Practice</h1>
 <p>Include this class here into your project:</p>
 <pre><code>package algorithms;
 
@@ -300,58 +339,81 @@ public class BuggyStringReverse {
 <p>The program takes a string as input and reverses it (i.e. “banana” should return “ananab”). </p>
 <p>However it does not work. Confirm this by running it in Eclipse. Then use the debugger to find the problem and fix it.</p>
 
+      </div>
+     
+    </div>
   </div>
- 
-
-
-<script>
-$('.ui.menu .item')
-  .tab({
-    history: true,
-    historyType: 'hash'
-  })
-;
-</script>
-
-   </div>
-
-   
-  <br><br>
-  <div class="ui bottom fixed borderless menu">
-    <div class="ui small item">
-    <p id="footertext">
-    Prepared by  Frank Walsh (fxwalsh@wit.ie). Except where otherwise noted, this content is licensed under a
-     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
-       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
-     </a>
-     </p>
+</div>
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right tiny menu">
+      <div class="ui mini message segment">
+        Frank Walsh (fxwalsh@wit.ie).
+        <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+            target="_blank">Creative Commons License
+        </a>
+      </div>
     </div>
   </div>
 
+<script>
+  $(document).on('keydown', function (e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+</script>
+
+    <footer>
+
+    </footer>
     <script>
-      
-$(document).ready(function()
-{
-  $("img").addClass ("ui image");
+      $(document).ready(function () {
+  $('img').addClass('ui image');
   $('.ui.embed').embed();
 
-  var images = $(".lab img");
-  jQuery.each(images, function(i)  {
-    if((images[i].alt).length > 0)
-    {
-      var div_img = $(document.createElement("div")).addClass("ui segment");
-      $(images[i]).wrap(div_img);
-      var div_label = $(document.createElement("div")).addClass("ui ribbon teal top attached label");
-      div_label.append(images[i].alt);
-      $(div_label).insertBefore(images[i]);
+  const $images = $('.lab img');
+  jQuery.each($images, function (i) {
+    if (($images[i].alt).length > 0) {
+      const divImg = $(document.createElement('div')).addClass('ui basic segment');
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass('ui blue ribbon label');
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
     }
   });
 
+  $('.ui.embed').embed();
 
-})
+  $('.ui.menu .item')
+      .tab({
+        history: true,
+        historyType: 'hash',
+      });
 
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+      .sidebar({ context: $('.pushable') })
+      .sidebar('setting', 'transition', 'slide out')
+      .sidebar('attach events', '#toc');
+});
 
     </script>
-
   </body>
+
  </html>
