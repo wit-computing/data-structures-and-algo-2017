@@ -113,16 +113,12 @@ body
   </header>
   <div class="right tab-menu menu">
     
-    <a class="item" data-tab="Lab-03">
-      Lab-03
+    <a class="item" data-tab="Eclipse-Tutorial">
+      Eclipse-Tutorial
     </a>
     
     <a class="item" data-tab="01">
       01
-    </a>
-    
-    <a class="item" data-tab="02">
-      02
     </a>
     
     <a class="item" href="../../index.html">
@@ -147,13 +143,13 @@ body
       
     
       
-        <a class="active item" href="../../topic01/book-3/index.html">
+        <a class="item" href="../../topic01/book-3/index.html">
           Lab-03
         </a>
       
     
       
-        <a class="item" href="../../topic01/book-4/index.html">
+        <a class="active item" href="../../topic01/book-4/index.html">
           Eclipse-Tutorial
         </a>
       
@@ -163,105 +159,15 @@ body
     <div class="ui basic segment">
       <br>
       
-      <div  class="ui tab segment lab" data-tab="Lab-03">
-        <h1>Read text from a URL</h1>
-<p>Develop a java program that reads in strings from the following URL and stores them in a sorted list.</p>
+      <div  class="ui tab segment lab" data-tab="Eclipse-Tutorial">
+        <h1>Eclipse Tutorial</h1>
+<p>This tutorial introduces some of the features of the Eclipse IDE using files from an existing JAVA teaching application.</p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="01">
-        <h1>Problem Specification</h1>
-<p>Develop a java program that reads in strings from the following URL and stores them in a sorted list.</p>
-<ul>
-<li><a href="http://dl.dropbox.com/u/18678304/2011/BSc2/words.txt">http://dl.dropbox.com/u/18678304/2011/BSc2/words.txt</a></li>
-</ul>
-<p>The user should then be able to enter a sub-string and the program should return a list of matching strings that contain the substring. All matching strings should be displayed, sorted and the search should be case insensitive.</p>
-<h2>Implementation Steps</h2>
-<ul>
-<li>Create a class called WordList. An instance of the  WordList class should have a list of all the words from the URL above(hint: use composition). The WordList class should implement this interface.  </li>
-</ul>
-<pre><code>package algorithms;
-
-import java.util.List;
-
-public interface StringSearchInterface {
-
-  public abstract List&lt;String&gt; getSubstringList(String subString);
-
-  public abstract void addString(String s);
-
-}</code></pre>
-<p>As you have not covered networking or exceptions in Java I’ve included a link to an example constructor for WordList(NOTE: it’s not complete!). However you should try to to figure out how to read from a URL yourself using the web (Try googling “read from url java”). Example constructor excerpt here:</p>
-<pre><code>  public WordList(String urlString) throws IOException {
-
-    BufferedReader in = null;
-    try {
-      wordList = new ArrayList&lt;String&gt;();
-      in = new BufferedReader(new InputStreamReader(new URL(urlString).openStream()));
-      String inputLine;
-      while ((inputLine = in.readLine()) != null)
-        wordList.add(inputLine);
-    }
-    finally {
-      if (in != null)
-        in.close();
-    }
-  }</code></pre>
-
-      </div>
-     
-      <div  class="ui tab segment lab" data-tab="02">
-        <h1>JUint Test</h1>
-<ul>
-<li>The following JUnit test case  will give you an indication of further implementation details and should be usable without modification. You can also include more rigorous test cases is you wish. </li>
-</ul>
-<pre><code>package algorithms;
-
-import static org.junit.Assert.*;
-import java.util.List;
-import org.junit.Test;
-
-public class WordListTest {
-
-  private static final String url = &quot;http://dl.dropbox.com/u/18678304/2011/BSc2/words.txt&quot;;
-
-  @Test
-  public void testAddString() throws Exception {
-    StringSearchInterface wordList;
-    String s = &quot;I Love Javaaaaaa!&quot;;
-    String searchString = &quot;love&quot;;
-
-    wordList = new WordList(url);
-
-    wordList.addString(s);
-    System.out.println(wordList.getSubstringList(searchString).size());
-    // check that the search returned some results
-    assertTrue(wordList.getSubstringList(s).size() == 1);
-
-  }
-
-  @Test
-  public void testGetSubstringList() throws Exception {
-    StringSearchInterface wordList;
-    String s = &quot;umb&quot;;
-
-    wordList = new WordList(url);
-    List&lt;String&gt; resultList = wordList.getSubstringList(s);
-
-    // check that the search returned some result(i.e. there is a match
-    // in the list)
-    assertTrue(resultList.size() &gt; 0);
-
-  }
-
-  @Test
-  public void testWordList() throws Exception {
-    StringSearchInterface wordList;
-
-    wordList = new WordList(url);
-    assertNotNull(wordList);
-  }
-}</code></pre>
+        <h1>Eclipse Tutorial</h1>
+<p>Access this tutorial <a href="https://github.com/rlacey2/EclispeMarieSimulator/raw/master/MarieSim%20via%20Eclipse.pdf">here</a></p>
 
       </div>
      
