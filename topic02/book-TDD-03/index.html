@@ -228,6 +228,9 @@ body
       <div  class="ui tab segment lab" data-tab="TDD-03">
         <h1>Objectives</h1>
 <p>Expand the pacemaker model to include Location and Activity classes. Introduce a set of tests to verify the behavior of the model.</p>
+<ul>
+<li><strong>Note:</strong> you will need to create a new JUnit test case for each class. (i.e. select File-&gt;New-&gt;JUnit Test Case)</li>
+</ul>
 
       </div>
      
@@ -276,7 +279,7 @@ public class Location
   } 
 }</code></pre>
 <h3>Activity</h3>
-<pre><code class="lang-java">ppackage models;
+<pre><code class="lang-java">package models;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
 
@@ -470,7 +473,7 @@ public class LocationTest
   public void testToString()
   {
     Location one = new Location(23.3f, 33.3f);
-    assertEquals (&quot;Location{ 23.3, 33.3,2}&quot;, one.toString());
+    assertEquals (&quot;Location{2, 23.3, 33.3}&quot;, one.toString());
   }</code></pre>
 <p>All should now be passing:</p>
 <p><img src="img/09.png" alt=""></p>
@@ -478,7 +481,7 @@ public class LocationTest
       </div>
      
       <div  class="ui tab segment lab" data-tab="04">
-        <h1>Fixtures</h1>
+        <h1>Location Test using Fixtures</h1>
 <p>We can simplify the test marginally by sharing the object initializations between tests:</p>
 <pre><code class="lang-java">package models;
 
@@ -509,8 +512,8 @@ public class LocationTest
   @Test
   public void testCreate()
   {
-    assertEquals ( 23.3f, one.latitude,0.01,);
-    assertEquals ( 33.3f, one.longitude,0.01,);
+    assertEquals ( 23.3f, one.latitude,0.01);
+    assertEquals ( 33.3f, one.longitude,0.01);
   }
 
   @Test
@@ -522,7 +525,7 @@ public class LocationTest
   @Test
   public void testToString()
   {
-    assertEquals (&quot;Location{ 23.3, 33.3,2}&quot;, one.toString());
+    assertEquals (&quot;Location{2, 23.3, 33.3}&quot;, one.toString());
   }
 }</code></pre>
 <p>Ready this carefully - the tests are identical, with the setup/tearDown methods called before/after each individual test.</p>
@@ -750,7 +753,7 @@ public class UserTest
   @Test
   public void testToString()
   {
-    assertEquals (&quot;User{&quot; + homer.id + &quot;, homer, simpson, secret, homer@simpson.com&quot;, homer.toString());
+    assertEquals (&quot;User{&quot; + homer.id + &quot;, homer, simpson, secret, homer@simpson.com}&quot;, homer.toString());
   }
 }</code></pre>
 <p>Integrate these version and verify that app passes all tests.</p>
@@ -946,7 +949,7 @@ public class PacemakerAPITest
   @Before
   public void setup()
   {
-    pacemaker = new PacemakerAPI(null);
+    pacemaker = new PacemakerAPI();
     for (User user : users)
     {
       pacemaker.createUser(user.firstName, user.lastName, user.email, user.password);
