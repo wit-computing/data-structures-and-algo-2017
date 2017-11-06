@@ -223,15 +223,9 @@ body
 <li>Create a new project called <em>lab6</em>.  </li>
 <li>Create a <strong>package</strong> called <em>lab6</em>.</li>
 </ol>
-<h3>Add stdlib jar to the project</h3>
-<ol>
-<li>Create a folder called <em>lib</em> in your project folder.</li>
-<li>Download the <em>stdlib-package</em> jar from <a href="http://introcs.cs.princeton.edu/java/stdlib/stdlib-package.jar">here</a>  and copy to the <em>lib</em> folder.</li>
-<li>Select  the jar file, then right click and select Build Path -&gt; Add to Build Path.</li>
-</ol>
 <h3>Create Class</h3>
 <ol>
-<li>Create a class called Sorter and add the following method: </li>
+<li>Create a class called <strong>Sorter</strong> and add the following method: </li>
 </ol>
 <pre><code>    public static int[] doSort(int[] a){
 
@@ -248,7 +242,8 @@ body
         }
         return a;
     }</code></pre>
-<p>We want to make some observations of running time for the doSort(...) method. To do this we need a way to produce integer arrays to use and the input parameter for the doSort(..) method. Add the following method to the Sorter class:</p>
+<p>We want to make some observations of running time for the doSort(...) method. To do this we need a way to produce integer arrays to use and the input parameter for 
+the doSort(..) method. Add the following method to the Sorter class:</p>
 <pre><code>    public static int[] generateIntArray(int n) {
         Random rand = new Random();
 
@@ -259,7 +254,7 @@ body
 
         return array;
     }</code></pre>
-<p>Finally, create the following main method that can execute the algorithm for randomised integer arrays of various sizes:</p>
+<p>Finally, create the following main method that can execute the &quot;doSort()&quot; algorithm for randomised integer array of size 10000:</p>
 <pre><code>    public static void main(String[] args) {
           int[] a = generateIntArray(10000);
           Stopwatch    stopwatch = new Stopwatch();
