@@ -227,7 +227,7 @@ body
 <ol>
 <li>Create a class called <strong>Sorter</strong> and add the following method: </li>
 </ol>
-<pre><code>    public static int[] doSort(int[] a){
+<pre><code class="lang-java">    public static int[] doSort(int[] a){
 
         for (int i = 0; i &lt; a.length - 1; i++)
         {
@@ -244,7 +244,7 @@ body
     }</code></pre>
 <p>We want to make some observations of running time for the doSort(...) method. To do this we need a way to produce integer arrays to use and the input parameter for 
 the doSort(..) method. Add the following method to the Sorter class:</p>
-<pre><code>    public static int[] generateIntArray(int n) {
+<pre><code class="lang-java">    public static int[] generateIntArray(int n) {
         Random rand = new Random();
 
         int [] array = new int[n];
@@ -255,7 +255,7 @@ the doSort(..) method. Add the following method to the Sorter class:</p>
         return array;
     }</code></pre>
 <p>Finally, create the following main method that can execute the &quot;doSort()&quot; algorithm for randomised integer array of size 10000:</p>
-<pre><code>    public static void main(String[] args) {
+<pre><code class="lang-java">    public static void main(String[] args) {
           int[] a = generateIntArray(10000);
           Stopwatch    stopwatch = new Stopwatch();
           doSort(a);
@@ -316,8 +316,6 @@ The following are instructions for MS Excel:
 - You can now use the equation as the basis for your hypothesis for predicting running time of you algorithm. remember the power depends on the algorithm, the coefficient depends on the hardware, software etc. of the machine. </p>
 <h3>Hypothesis</h3>
 <p>Using the equation from the last section, predict the running time for an array of size 50,000. Then, run an experiment using your program to validate if your hypothesis is correct. It wont be exactly the same but should be close if your hypothesis is correct.</p>
-<h2>Birthday Problem</h2>
-<p>How likely is it that, in a group of people, at least 2 of them have the same birthday? Write a program that takes an integer N from the command line and generates a random sequence of integers between 0 and N – 1. Run experiments to validate the hypothesis that the number of integers generated before the first repeated value is found is <strong>sqrt(pi*N/2)</strong>.</p>
 
       </div>
      
@@ -360,19 +358,13 @@ c) whether the basic operation count can be different for inputs of the same siz
 <li>Define a cost model that includes the basic operation(hint: number of array accesses). This should take the form C(N) = ...).</li>
 <li>Use tilda notation to simlpify the cost model.</li>
 </ul>
-<p><strong>Tilda Notation</strong></p>
-<p>Use tilda notation to simplify the following:</p>
-<p>a. $$N + 1$$
-d. $$2N^3  + 15 N 2 + N$$
-b. $$1 + 1/N$$
-c. $$(1 + 1/N )(1 + 2/N )$$
-e. $$lg(2N )/lg N$$</p>
 <h2>Creative Exercises</h2>
 <p><strong>Throwing eggs from a building:</strong> Suppose that you have an N-story building and
 plenty of eggs. Suppose also that an egg is broken if it is thrown off floor F or higher,
 and unhurt otherwise. Devise a strategy to determine the value of F such that the
-number of broken eggs is ~lg N when using ~lg N throws, then find a way to reduce the
-cost to ~2lg F.</p>
+number of broken eggs is approx lg N when using approx lg N throws, then find a way to reduce the
+cost to ~2lg F. (lg is logarithm base 2)</p>
+<p><strong>Birthday Problem:</strong> How likely is it that, in a group of people, at least 2 of them have the same birthday? Write a program that takes an integer N from the command line and generates a random sequence of integers between 0 and N – 1. Run experiments to validate the hypothesis that the number of integers generated before the first repeated value is found is <strong>sqrt(pi*N/2)</strong>.</p>
 
       </div>
      
