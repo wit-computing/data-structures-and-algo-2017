@@ -113,20 +113,20 @@ body
   </header>
   <div class="right tab-menu menu">
     
-    <a class="item" data-tab="assignment-1">
-      assignment-1
+    <a class="item" data-tab="assignment-2">
+      assignment-2
     </a>
     
     <a class="item" data-tab="Overview">
       Overview
     </a>
     
-    <a class="item" data-tab="Movie Data">
-      Movie Data
+    <a class="item" data-tab="Recommendations">
+      Recommendations
     </a>
     
-    <a class="item" data-tab="Testing">
-      Testing
+    <a class="item" data-tab="Searching">
+      Searching
     </a>
     
     <a class="item" data-tab="Submission and Testing">
@@ -191,13 +191,13 @@ body
       
     
       
-        <a class="active item" href="../../topic04/book-Assignment-01/index.html">
+        <a class="item" href="../../topic04/book-Assignment-01/index.html">
           assignment-1
         </a>
       
     
       
-        <a class="item" href="../../topic04/book-Assignment-02/index.html">
+        <a class="active item" href="../../topic04/book-Assignment-02/index.html">
           assignment-2
         </a>
       
@@ -213,85 +213,60 @@ body
     <div class="ui basic segment">
       <br>
       
-      <div  class="ui tab segment lab" data-tab="assignment-1">
-        <h1>Assignment 1</h1>
-<p>Many companies use recommender systems to suggest products, information, and friends to their customers .  In this assignment you will start develop a Movie recommender using existing movie data.</p>
+      <div  class="ui tab segment lab" data-tab="assignment-2">
+        <h1>Assignment 2</h1>
+<p>In this assignment you will extend the Movie recommender solution from the previous assignment to include the following features.</p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="Overview">
         <h2>Overview</h2>
-<p>Many companies use recommender systems to suggest products, information, and friends to their customers . These systems analyse usage patterns to suggest what a user would prefer from among a collection of things he has never experienced. For example, fig.1 shows Amazon’s recommendations based on a user’s activity (e.g. other movies they’ve rated etc.). 
-<img src="img/00.png" alt="Amazon Recommendations" title="Amazon Recommendations">
-Recommender systems are big business - recently  Netflix ran an open competition for a recommender algorithm. The winners prize was $1 million. In this assignment, you will develop the first part of a Movies recommender program. Unfortunately, there&#39;s no cash prize involved :( !</p>
-<p>The main aims of this assignment is to write a Java program that can:</p>
+<p>Recommender systems analyse usage patterns to suggest what a user would prefer from among a collection of things he/she has never experienced. For example, fig.1 shows Amazon’s recommendations based on a user’s activity (e.g. other movies they’ve rated etc.). 
+<img src="img/main.png" alt="Amazon Recommendations" title="Amazon Recommendations">
+You will extend your work from assignment 1 to include the following features:</p>
 <ul>
-<li>Load existing movie, user and rating data into a Java program. </li>
-<li>Develop a suitable data serializer.</li>
-<li>Create a suitable API to view and manipulate movie, user, and rating data.</li>
+<li>Import ratings data from MovieLens data set</li>
+<li>Provide a simple user interface (console or GUI) that uses the API from assignment 1</li>
+<li>Search movies based on title</li>
+<li>Calulate the top 10 movies</li>
+<li>Calculate movie recommendation for a user</li>
+<li>Validation</li>
+<li>Analyse your movie search and recommender algorithms indicating order of growth classifications (Empirically and analyicially)</li>
+<li>Improve the unit testing of your code</li>
 </ul>
 
       </div>
      
-      <div  class="ui tab segment lab" data-tab="Movie Data">
-        <h2>Load intial Movie Data</h2>
-<p>You are provided with the following data adapted from <a href="https://movielens.org/">MovieLens</a>. You will need to examine the data files and read the README file to design and develop suitable abstract data types to represent the data in your Java program (hint: User, Movie and Rating classes). The Movielens files are in <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a>  text format - you will have to write your own code that can parse the Movielens data. 
-You will use the following two data sets; a large data set and a small data set. It might be more convenient to use the smaller data set in the early part of development, then move to the larger data set later on.
-<a href="data/moviedata_small.zip">small data set</a> .
-<a href="data/moviedata.zip">large data set</a> .</p>
-<p>The following code example uses <strong>java.util.Scanner</strong>  to read in a text file line by line, parse the data, and print the data to the standard output:</p>
-<pre><code class="lang-java">        String delims = &quot;[|]&quot;;
-        Scanner scanner = new Scanner(new File(&quot;./moviedata_small/users5.dat&quot;));
-        while (scanner.hasNextLine()) {
-            String userDetails = scanner.nextLine();
-            // parse user details string
-            String[] userTokens = userDetails.split(delims);
-
-            if (userTokens.length == 7) {
-                System.out.println(&quot;UserID: &quot; + userTokens[0] + &quot;,First Name:&quot; + userTokens[1]);
-            } else {
-                scanner.close();
-                throw new IOException(&quot;Invalid member length: &quot; + userTokens.length);
-            }
-        }
-        scanner.close();</code></pre>
-<p>The above code produces output similar to the following:</p>
+      <div  class="ui tab segment lab" data-tab="Recommendations">
+        <h2>Making recommendations</h2>
+<p>The following are two possible approaches for implementing the recommendation function.</p>
+<h3>Approach 1 (Simplistic):</h3>
+<p>A simple approach would be to make almost the same prediction for every member. In this case the program would simply calculate the average rating for all the films in the database, sort the films by rating and then from that sorted list, suggest the top 5 films that the member hasn&#39;t already rated. With this simple approach, the only information unique to the member used by the prediction algorithm was whether or not the member had seen a film.</p>
+<h3>Approach 2:</h3>
+<p>A better prediction about what a member might like by considering his actual ratings in the past and how these ratings compare to the ratings given by other customers. Consider how you decide on movie recommendations from friends. If a friend tells you about a number of movies that she/he enjoyed and you also enjoyed them, then when your friend recommends another movie that you have never seen, you probably are willing to go see it. On the other hand, if you and a different friend always tend to disagree about movies, you are not likely to go to see a movie this friend recommends.
+A program can calculate how similar two users are by treating their ratings as a <em>vector</em> and calculating the dot product of these two vectors (the dot product is just the sum of the products of each of the corresponding elements.) For example, suppose we had 3 films in our database and Paddy rated them [5, 3,-5], Clodagh rated them [1, 5,-3], Ronan rated them [5, -3, 5], and Michael rated them [1, 3, 0]. </p>
 <blockquote>
-<p>UserID: 1, First Name:Leonard 
-UserID: 2, First Name:Melody
-UserID: 3, First Name:Gregory
-UserID: 4, First Name:Oliver
-UserID: 5, First Name:Jenna</p>
+<p>The similarity between Paddy and Ronan is:      (5 x 5) + (3 x -3) + (-5 x 5) = 25 - 9 - 25 = -9. 
+The similarity between Paddy and Clodagh is: (5 x 1) + (3 x 5) + (-5 x -3) = 5 + 15 + 15 = 35. 
+The similarity between Paddy and Michael is:    (5 x 1) + (3 x 3) + (-5 x 0) = 5 + 9 + 0 = 14. </p>
 </blockquote>
-<p>You will also need to use suitable data structures that will support the functionality of the program.</p>
-<h2>Serializer</h2>
-<p>Develop a serializer that can serialize/deserialize all the data into a single file. You must use a well known external data format such as XML, JSON or both. </p>
-<h2>Recommender API</h2>
-<p>Develop a recommender api that provides <strong>at least</strong> the following interface description. The interface desciption is in the form <em>methodName(parameter list)</em>. The parameter list includes required parameters - you can include more if you wish.</p>
-<pre><code>addUser(firstName,lastName,age,gender,occupation)
-removeUser(userID)
-addMovie(title, year, url)
-addRating(userID, movieID, rating)
-getMovie(movieID)
-getUserRatings(userID)
-getMoviesByTitle()
-getMoviesByYear()
-initialLoad(csvFile)
-load()
-write()</code></pre>
-<p>A more precise description of the above API will follow and will be discussed in class.</p>
+<p>We see that if both people like a film (rating it with a positive number) it increases their similarity and if both people dislike a film (both giving it a negative number) it also increases their similarity.
+Once you have calculated the similarity between Paddy and every other customer, you can then identify whose ratings are most similar to Paddy&#39;s. In this case Clodagh is most similar to Paddy, so we would recommend to Paddy the top films from Clodagh&#39;s list that Paddy hadn&#39;t already rated.</p>
 
       </div>
      
-      <div  class="ui tab segment lab" data-tab="Testing">
-        <h2>Testing</h2>
-<p>Approx 20% of marks in this assignment is for the testing strategy. You are required to provide the following:</p>
-<ul>
-<li>JUnit test cases + a series of tests</li>
-<li>For the tests you write - indicate in a comment the ‘type’ of test you are intending. This ‘type’ can be drawn from the ‘pragmatic’ guidelines:CORRECT (7 guidelines), RIGHT Bicep (5 guidelines)</li>
-<li>Your test strategy should test the persistance mechanism (serialisation/deserialisation)</li>
-<li>Coverage will be measured (but with modest expectations).</li>
-</ul>
+      <div  class="ui tab segment lab" data-tab="Searching">
+        <h1>Searching</h1>
+<p>Your assignment should allow a user to search based on film title. The user can enter a string and the program should return a list of matching films that contain that text. All matching films should be displayed and the search should be case insensitive.</p>
+<h2>Weighing</h2>
+<p>How should you order the list of matching films? You are probably familiar with <a href="https://en.wikipedia.org/wiki/Autocomplete">Autocomplete </a>  on smart phones and search engines. Most autocomplete application predict how likely it is that the user is typing/searching for an item. For this purpose, each item has a <strong>weight</strong> and your program will use these to compute a list of the top matching terms, in decreasing order of weight.</p>
+<p>The weights are calculated using various data, such as number of plays for movie streaming services, frequencies of search queries from other Google users, or the typing history of a smart phone user.
+In this assignment, you should use the rating data for the film</p>
+<h2>Performance</h2>
+<p>The performance of autocomplete functionality is critical in many systems. For example, the Google search engine runs an autocomplete application. It also performs this computation for every keystroke typed into the search bar and for every user! Therefore application has to return a list of suggestions in a short time  for it to be useful to the user. It also performs this computation for every keystroke typed into the search bar and for every user!</p>
+<p><a href="https://en.wikipedia.org/wiki/Autocomplete">Autocomplete </a> features in many applications such as search engines(Google), email programs etc.
+You would noticed the autocomplete mechanism in the Eclipse Java source code editor.</p>
+<p><img src="img/01.jpg" alt=" Autocomplete in Eclipse"></p>
 
       </div>
      
