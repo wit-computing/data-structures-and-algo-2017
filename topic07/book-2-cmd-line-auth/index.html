@@ -1,0 +1,626 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     
+
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" type="text/css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/solarized-light.min.css" rel="stylesheet" />
+
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/languages/java.min.js"></script>
+     <script>hljs.initHighlightingOnLoad();</script>
+
+     
+
+     <style>
+       
+
+body 
+{
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+}
+
+figcaption
+{
+  margin-bottom: 20px;
+}
+
+.vertical-align
+{
+  display: flex;
+  align-items: center;
+}
+
+
+
+     </style>
+
+   </head>
+
+  <body>
+    
+
+<style>
+  
+
+code
+{
+  font-family: "Monaco";
+  font-size: 110%;
+}
+
+img
+{
+  padding:1px;
+  border:1px solid black;
+}
+
+h1
+{
+  font-style:italic;
+  font-size:130%;
+  border-bottom:thin solid black;
+}
+
+h2
+{
+  font-size:110%;
+  border-bottom: thin solid black;
+}
+
+h3
+{
+  font-size:100%;
+  border-bottom: thin solid black;
+}
+
+body
+{
+  overflow-y: scroll;
+}
+
+.pushable > .pusher
+{
+  padding-bottom: 1.5rem;
+}
+
+.ui.segment.pushable
+{
+  margin: 0;
+  padding: 1rem 0;
+  overflow: visible;
+}
+
+
+
+</style>
+
+<div class="ui fixed top pointing inverted menu labmenu">
+  <header class="header item">
+    <i id="toc" class="sitemap icon"></i>
+    <a href="../index.html">
+      CLI and Authentication
+    </a>
+  </header>
+  <div class="right tab-menu menu">
+    
+    <a class="item" data-tab="Command-Line-Auth">
+      Command-Line-Auth
+    </a>
+    
+    <a class="item" data-tab="intro">
+      intro
+    </a>
+    
+    <a class="item" data-tab="user">
+      user
+    </a>
+    
+    <a class="item" data-tab="api">
+      api
+    </a>
+    
+    <a class="item" data-tab="run">
+      run
+    </a>
+    
+    <a class="item" data-tab="test">
+      test
+    </a>
+    
+    <a class="item" data-tab="Exercises">
+      Exercises
+    </a>
+    
+    <a class="item" href="../../index.html">
+      <i class="home icon"></i>
+    </a>
+  </div>
+</div>
+
+<div class="ui segment pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    
+      
+        <a class="item" href="../../topic01/book-1/index.html">
+          Lab-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01/book-2/index.html">
+          Lab-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01/book-3/index.html">
+          Lab-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic01/book-4/index.html">
+          Eclipse-Tutorial
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic02/book-TDD-01/index.html">
+          TDD-01
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic02/book-TDD-02/index.html">
+          TDD-02
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic02/book-TDD-03/index.html">
+          TDD-03
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic03/book-TDD-04/index.html">
+          TDD-04
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04/book-Assignment-01/index.html">
+          assignment-1
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic04/book-Assignment-02/index.html">
+          assignment-2
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic05/book-1/index.html">
+          Lab-05
+        </a>
+      
+    
+      
+        <a class="item" href="../../topic07/book-1-cmd-line/index.html">
+          Command-Line
+        </a>
+      
+    
+      
+        <a class="active item" href="../../topic07/book-2-cmd-line-auth/index.html">
+          Command-Line-Auth
+        </a>
+      
+    
+  </div>
+  <div class="pusher" tabindex="-1">
+    <div class="ui basic segment">
+      <br>
+      
+      <div  class="ui tab segment lab" data-tab="Command-Line-Auth">
+        <h1>Objectives</h1>
+<p>Extend the pacemaker project  to include an authentication facility</p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="intro">
+        <h1>Setup</h1>
+<p>This lab assumes you have completed the previous lab. The completed solution for the last lab if here:</p>
+<ul>
+<li><a href="https://github.com/wit-computing/algorithms-2015-pacemaker">pacemaker</a></li>
+</ul>
+<p>This lab will update the API and the command line interface to pacemaker to provide a simple authentication/login facility.</p>
+<ul>
+<li>Part 1 - Simple authentication: Require users to authenticate before they perform any actions.</li>
+<li>Part 2 - Roles: Each user will be assigned a role, <strong>admin</strong> or <strong>standard</strong>. Only Admin users should be able add and delete users. Standard users should only be allowed to add activities and locations.</li>
+</ul>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="user">
+        <h1>User Roles</h1>
+<p>To associate each user with a role, add a new public property to the class as follows: </p>
+<pre><code class="lang-java">   public String role;</code></pre>
+<p>Now overload the existing constructor in the User class to provide a new constructor that includes role. This retains the old constructor so that we dont break any other parts of the application code that uses it:</p>
+<pre><code class="lang-java">  public User(String firstName, String last, String email, String password)
+  {
+    this(firstName,last, email, password, &quot;default&quot;);
+  }
+
+  public User(String firstName, String lastName, String email, String password, String role) {
+      this.id        = counter++;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+      this.password = password;
+      this.role = role;
+}</code></pre>
+<p>Run the UserTest to check if the new changes have caused any failures. You will notice the toString() test fails. This is bscause it does not include the role property. </p>
+<p><img src="./img/toString.png" alt="testToString() failure"></p>
+<p>Update the test so that it includes role in the test and passes. You may need to alter the counter and id field values to suit your solution:</p>
+<pre><code class="lang-java"> @Test
+  public void testToString()
+  {
+    assertEquals (&quot;models.User\n{\n  \&quot;firstName\&quot;: \&quot;homer\&quot;,\n&quot;
+        + &quot;  \&quot;lastName\&quot;: \&quot;simpson\&quot;,\n&quot;
+        + &quot;  \&quot;password\&quot;: \&quot;secret\&quot;,\n&quot;
+        + &quot;  \&quot;role\&quot;: \&quot;default\&quot;,\n&quot;
+        + &quot;  \&quot;activities\&quot;: {},\n&quot;
+        + &quot;  \&quot;counter\&quot;: 6,\n&quot;
+        + &quot;  \&quot;id\&quot;: 5,\n&quot;
+        + &quot;  \&quot;email\&quot;: \&quot;homer@simpson.com\&quot;\n&quot;
+        + &quot;}&quot;, homer.toString());
+  }</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="api">
+        <h1>Authentication Action</h1>
+<p>We need to add a new public method to the Pacemaker API that allows users to authenticate with their email and password. These fields are already part of the User class.
+Add the following code to the PacemakerAPI class:</p>
+<pre><code class="lang-java">// simplified login method
+  private Optional&lt;User&gt; user;
+
+  public boolean login(String email, String password) {
+    user = Optional.fromNullable(emailIndex.get(email));
+    if (user.isPresent() &amp;&amp; user.get().password.equals(password)){
+
+      log.info(currentUser.firstName + &quot; logged in...&quot;);
+      return; 
+    }
+    return currentUser;
+  }</code></pre>
+<p>Mow add another method to log out the current user:</p>
+<pre><code class="lang-java">  // simplified and generalised logout method
+  public void logout() {
+    Optional&lt;User&gt; user = currentUser;
+    if (user.isPresent()){
+      log.info(currentUser.get().firstName + &quot; logged out...&quot;);
+      currentUser = Optional;
+    }
+  }</code></pre>
+<h1>Main</h1>
+<p>You already have a class called <code>Main</code> in the controllers package. Users will now have to log in before they can access other API features. We will only provide a log in command in the Main menu now. Update the Main class with the following code:</p>
+<pre><code class="lang-java">public class Main implements ShellDependent {
+  private static final String ADMIN = &quot;admin&quot;;
+  public PacemakerAPI paceApi;
+  private Shell theShell;
+
+  public Main() throws Exception {
+    File datastore = new File(&quot;datastore.xml&quot;);
+    Serializer serializer = new XMLSerializer(datastore);
+    paceApi = new PacemakerAPI(serializer);
+    if (datastore.isFile()) {
+      paceApi.load();
+    }
+  }
+
+  public void cliSetShell(Shell theShell) {
+    this.theShell = theShell;
+  }
+
+  @Command(description = &quot;Log in&quot;)
+  public void logIn(@Param(name = &quot;user name&quot;) String userName, @Param(name = &quot;password&quot;) String pass)
+      throws IOException {
+
+    if (paceApi.login(userName, pass) &amp;&amp; paceApi.currentUser.isPresent()) {
+      User user = paceApi.currentUser.get();
+      System.out.println(&quot;You are logged in as &quot; + user.email);
+      if (user.role!=null &amp;&amp; user.role.equals(ADMIN)) {
+        AdminMenu adminMenu = new AdminMenu(paceApi, user.firstName);
+        ShellFactory.createSubshell(user.firstName, theShell, &quot;Admin&quot;, adminMenu).commandLoop();
+      } else {
+        DefaultMenu defaultMenu = new DefaultMenu(paceApi, user);
+        ShellFactory.createSubshell(user.firstName, theShell, &quot;Default&quot;, defaultMenu).commandLoop();
+      }
+    } else
+      System.out.println(&quot;Unknown username/password.&quot;);
+  }
+
+  public static void main(String[] args) throws Exception {
+    Main main = new Main();
+    Shell shell = ShellFactory.createConsoleShell(&quot;pm&quot;, &quot;Welcome to pacemaker-console - ?help for instructions&quot;,
+        main);
+    shell.commandLoop();
+    main.paceApi.store();
+  }
+}</code></pre>
+<p>Add in both the Admin and the Default subshell classes. These will be used by the application to offer the correct commands based on their role.<br>Create a new class in the controllers package called <strong>DefaultMenu</strong> and enter the following code:</p>
+<pre><code class="lang-java">public class DefaultMenu {
+
+  private String name;
+  private User user;
+  private PacemakerAPI paceApi;
+
+  public DefaultMenu(PacemakerAPI paceApi, User user) {
+    this.paceApi = paceApi;
+    this.setName(user.firstName);
+    this.user = user;
+  }
+  @Command(description = &quot;Get a Users detail&quot;)
+  public void getUser(@Param(name = &quot;email&quot;) String email) {
+    User user = paceApi.getUserByEmail(email);
+    System.out.println(user);
+  }
+  @Command(description = &quot;Add an activity&quot;)
+  public void addActivity(@Param(name = &quot;type&quot;) String type, @Param(name = &quot;location&quot;) String location,
+      @Param(name = &quot;distance&quot;) double distance) {
+    paceApi.createActivity(user.id, type, location, distance);
+  }
+  @Command(description = &quot;Add Location to an activity&quot;)
+  public void addLocation(@Param(name = &quot;activity-id&quot;) Long id, @Param(name = &quot;latitude&quot;) float latitude,
+      @Param(name = &quot;longitude&quot;) float longitude) {
+    Optional&lt;Activity&gt; activity = Optional.fromNullable(paceApi.getActivity(id));
+    if (activity.isPresent()) {
+      paceApi.addLocation(activity.get().id, latitude, longitude);
+    }
+  }
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+}</code></pre>
+<p>Create a new class in the controllers package called <strong>AdminMenu</strong> and enter the following code:</p>
+<pre><code class="lang-java">public class AdminMenu {
+
+  private String name;
+  private PacemakerAPI paceApi;
+
+  public AdminMenu(PacemakerAPI paceApi, String userName) {
+
+    this.paceApi = paceApi;
+    this.setName(userName);
+  }
+
+  @Command(description = &quot;Get all users details&quot;)
+  public void getUsers() {
+
+    Collection&lt;User&gt; users = paceApi.getUsers();
+    System.out.println(users);
+
+  }
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  @Command(description = &quot;Create a new User&quot;)
+  public void createUser(@Param(name = &quot;first name&quot;) String firstName, @Param(name = &quot;last name&quot;) String lastName,
+      @Param(name = &quot;email&quot;) String email, @Param(name = &quot;password&quot;) String password) {
+
+    paceApi.createUser(firstName, lastName, email, password);
+
+  }
+  @Command(description = &quot;Get a Users detail&quot;)
+  public void getUser(@Param(name = &quot;email&quot;) String email) {
+
+    User user = paceApi.getUserByEmail(email);
+    System.out.println(user);
+
+  }
+  @Command(description = &quot;Delete a User&quot;)
+  public void deleteUser(@Param(name = &quot;email&quot;) String email) {
+
+    Optional&lt;User&gt; user = Optional.fromNullable(paceApi.getUserByEmail(email));
+    if (user.isPresent()) {
+      paceApi.deleteUser(user.get().id);
+    }
+  }
+  @Command(description = &quot;Add an activity&quot;)
+  public void addActivity(@Param(name = &quot;id&quot;) long id, @Param(name = &quot;type&quot;) String type,
+      @Param(name = &quot;location&quot;) String location, @Param(name = &quot;distance&quot;) double distance) {
+    paceApi.createActivity(id, type, location, distance);
+  }
+  @Command(description = &quot;Add Location to an activity&quot;)
+  public void addLocation(@Param(name = &quot;activity-id&quot;) Long id, @Param(name = &quot;latitude&quot;) float latitude,
+      @Param(name = &quot;longitude&quot;) float longitude) {
+    Optional&lt;Activity&gt; activity = Optional.fromNullable(paceApi.getActivity(id));
+    if (activity.isPresent()) {
+      paceApi.addLocation(activity.get().id, latitude, longitude);
+    }
+  }
+}</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="run">
+        <h1>Run application</h1>
+<h3>Update Lisa&#39;s XMLdata</h3>
+<p>To test if the code works from the CLI, you will need to add some role fields to the users in the &#39;datastore.xml&#39; file. 
+Open the datastore.xml in Eclipse and make Lisa an admin by adding a <role> element to Lisa&#39;s entry in the file.
+<img src="./img/xml.png" alt="Role XML "></p>
+<p>Now Run the application as in the previous lab. You will see that you only have one command option at the CLI when it launches:</p>
+<p>and &#39;?list-all` for a complete list:</p>
+<pre><code>pm&gt; ?list
+abbrev  name  params
+li  log-in  (user name, password)
+pm&gt;</code></pre>
+<p>Now log in as Bart, you should just see the Default commands listed:</p>
+<pre><code>pm&gt; ?list
+abbrev  name  params
+li  log-in  (user name, password)
+pm&gt; li bart@simpson.com secret
+You are logged in as bart@simpson.com
+Default
+pm/bart&gt; ?list
+abbrev  name  params
+aa  add-activity  (type, location, distance)
+al  add-location  (activity-id, latitude, longitude)
+gu  get-user  (email)
+pm/bart&gt;</code></pre>
+<p>To &quot;log out&quot; type exit. This will take you to the main shell. Then log in as Lisa (the admin) you should now see all the commands are now available</p>
+<pre><code>pm/bart&gt; exit
+pm&gt; li lisa@simpson.com secret
+You are logged in as lisa@simpson.com
+Admin
+pm/lisa&gt; ?list
+abbrev  name  params
+aa  add-activity  (id, type, location, distance)
+al  add-location  (activity-id, latitude, longitude)
+gu  get-user  (email)
+gu  get-users ()
+cu  create-user (first name, last name, email, password)
+du  delete-user (email)
+pm/lisa&gt;</code></pre>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="test">
+        <h1>Testing</h1>
+<p>We should now update our JUnit tests to include the new methods we&#39;ve added to the PacemakerAPI.</p>
+<h2>Check existing tests</h2>
+<p>It&#39;s always a good idea to check that you have not made any breaking changes.
+Run the existing PacemakerAPI and Persistence JUnit tests in the test package and make sure they all still pass.</p>
+<h2>Update test fixtures</h2>
+<p>We need to include some new role data in the test fixtures to add </p>
+<p>Open Fixtures.java file and update the users array to include roles:</p>
+<pre><code class="lang-java">   public static User[] users =
+  {
+    new User (&quot;marge&quot;, &quot;simpson&quot;, &quot;marge@simpson.com&quot;,  &quot;secret&quot;),
+    new User (&quot;lisa&quot;,  &quot;simpson&quot;, &quot;lisa@simpson.com&quot;,   &quot;secret&quot;, &quot;admin&quot;),
+    new User (&quot;bart&quot;,  &quot;simpson&quot;, &quot;bart@simpson.com&quot;,   &quot;secret&quot;, &quot;default&quot;),
+    new User (&quot;maggie&quot;,&quot;simpson&quot;, &quot;maggie@simpson.com&quot;, &quot;secret&quot;, &quot;something else&quot;)
+  };</code></pre>
+<p>Now open the PacemakerAPITest and add the following method to test the login:</p>
+<pre><code class="lang-java">@Test
+    public void testUserLogin() {
+        // checking with lisa&#39;s login(admin)
+        assertTrue(pacemaker.login(users[1].email, users[1].password));
+        assertEquals(pacemaker.currentUser.get(), users[1]);
+        // check logout
+        pacemaker.logout();
+        assertEquals(pacemaker.currentUser, Optional.absent());
+        // check failed login
+        assertFalse(pacemaker.login(users[1].email, &quot;wrongpass&quot;));
+        assertEquals(pacemaker.currentUser, Optional.absent());
+    }</code></pre>
+<p>Now run the test and check it passes...</p>
+<p><img src="./img/test.png" alt="Test login"></p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="Exercises">
+        <h2>Exercises</h2>
+<p>You will notice in the code that we are not checking for a authentication or authorisation in the API code. For example, in PacemakerAPI.java, we do not check if the role of the user before performing the deleteUser()</p>
+<ul>
+<li>Update the API such that only authenticated admin users can delete and add users</li>
+<li>Update your JUnit tests to test the previous exercise</li>
+</ul>
+
+      </div>
+     
+    </div>
+  </div>
+</div>
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right tiny menu">
+      <div class="ui mini message segment">
+        Frank Walsh (fxwalsh@wit.ie),Richard Lacey (rlacey@wit.ie).
+        <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/"
+            target="_blank">Creative Commons License
+        </a>
+      </div>
+    </div>
+  </div>
+
+<script>
+  $(document).on('keydown', function (e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+</script>
+
+    <footer>
+
+    </footer>
+    <script>
+      $(document).ready(function () {
+  $('img').addClass('ui image');
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function (i) {
+    if (($images[i].alt).length > 0) {
+      const divImg = $(document.createElement('div')).addClass('ui basic segment');
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass('ui blue ribbon label');
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.embed').embed();
+
+  $('.ui.menu .item')
+      .tab({
+        history: true,
+        historyType: 'hash',
+      });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+      .sidebar({ context: $('.pushable') })
+      .sidebar('setting', 'transition', 'slide out')
+      .sidebar('attach events', '#toc');
+});
+
+    </script>
+  </body>
+
+ </html>
