@@ -293,26 +293,26 @@ body
       <div  class="ui tab segment lab" data-tab="api">
         <h1>Authentication Action</h1>
 <p>We need to add a new public method to the Pacemaker API that allows users to authenticate with their email and password. These fields are already part of the User class.
-Add the following code to the PacemakerAPI class:</p>
+Add a new property to the PaceMakerAPI class to keep track of the user in the current session.</p>
+<pre><code class="lang-java">Optional&lt;User&gt; currentUser;</code></pre>
+<p>Add the following code to the PacemakerAPI class:</p>
 <pre><code class="lang-java">// simplified login method
-  private Optional&lt;User&gt; user;
-
   public boolean login(String email, String password) {
-    user = Optional.fromNullable(emailIndex.get(email));
-    if (user.isPresent() &amp;&amp; user.get().password.equals(password)){
-
-      log.info(currentUser.firstName + &quot; logged in...&quot;);
-      return; 
+    Optional&lt;User&gt; user = Optional.fromNullable(emailIndex.get(email));
+    if (user.isPresent() &amp;&amp; user.get().password.equals(password)) {
+      currentUser = user;
+      FileLogger.getLogger().log(currentUser.get().email + &quot; logged in...&quot;);
+      return true;
     }
-    return currentUser;
+    return false;
   }</code></pre>
 <p>Mow add another method to log out the current user:</p>
-<pre><code class="lang-java">  // simplified and generalised logout method
+<pre><code class="lang-java">  // simplified and generalized version of my logout method
   public void logout() {
     Optional&lt;User&gt; user = currentUser;
-    if (user.isPresent()){
-      log.info(currentUser.get().firstName + &quot; logged out...&quot;);
-      currentUser = Optional;
+    if (user.isPresent()) {
+      FileLogger.getLogger().log(currentUser.get().firstName + &quot; logged out...&quot;);
+      currentUser = Optional.absent();
     }
   }</code></pre>
 <h1>Main</h1>
