@@ -129,10 +129,6 @@ body
       Recommendations
     </a>
     
-    <a class="item" data-tab="Searching - Copy">
-      Searching - Copy
-    </a>
-    
     <a class="item" data-tab="Searching">
       Searching
     </a>
@@ -264,9 +260,23 @@ You will extend your work from assignment 1 to include the following features:</
 Another option is JavaFX which provides full Graphical User Interface capabilities. 
 Cliche will allow you to simply create an interactive command-line user interfaces.</p>
 <h2>Authentication</h2>
-<p>With most recommender applications, your are required to authenicate yourself.  For this, your movie recommender should be modified to only allow authenticated users use the system. 
-Include a login option in your user interface that prompts users to authenticate themselves. 
-Similar to the User interface, try to find an existing framework/library the accomplishes this. One option is Apache Shiro. This is a Java security framework that performs authentication, authorization, cryptography, and session management. This should allow you to quickly and easily secure your application.</p>
+<p>With most recommender applications, your are required to authenticate yourself.  For this, your movie recommender should be modified to only allow authenticated users use the system. 
+Include a login option in your user interface that prompts users to authenticate themselves. This can be based in the command line interface or as a GUI if you wish.</p>
+<pre><code class="lang-bash">Welcome to pacemaker-console - ?help for instructions
+pm&gt; ?list
+abbrev    name    params
+li    log-in    (user name, password)
+pm&gt; li bart@simpson.com secret
+You are logged in as bart@simpson.com
+Default
+pm/bart&gt; ?list
+abbrev    name    params
+al    add-location    (activity-id, latitude, longitude)
+gu    get-user    (email)
+aa    add-activity    (type, location, distance)
+pm/bart&gt;</code></pre>
+<h3>Existing libraries</h3>
+<p>Similar to the User interface, could also use existing framework/library the accomplishes this. One option is Apache Shiro. This is a Java security framework that performs authentication, authorization, cryptography, and session management. This should allow you to secure your application using best practice.</p>
 
       </div>
      
@@ -285,20 +295,6 @@ The similarity between Paddy and Michael is:    (5 x 1) + (3 x 3) + (-5 x 0) = 5
 </blockquote>
 <p>We see that if both people like a film (rating it with a positive number) it increases their similarity and if both people dislike a film (both giving it a negative number) it also increases their similarity.
 Once you have calculated the similarity between Paddy and every other customer, you can then identify whose ratings are most similar to Paddy&#39;s. In this case Clodagh is most similar to Paddy, so we would recommend to Paddy the top films from Clodagh&#39;s list that Paddy hadn&#39;t already rated.</p>
-
-      </div>
-     
-      <div  class="ui tab segment lab" data-tab="Searching - Copy">
-        <h1>Searching</h1>
-<p>Your assignment should allow a user to search based on film title. The user can enter a string and the program should return a list of matching films that contain that text. All matching films should be displayed and the search should be case insensitive.</p>
-<h2>Order and weighing</h2>
-<p>How should you order the list of matching films? You are probably familiar with <a href="https://en.wikipedia.org/wiki/Autocomplete">Autocomplete </a>  on smart phones and search engines. Most autocomplete application predict how likely it is that the user is typing/searching for an item. For this purpose, each item has a <strong>weight</strong> and your program will use these to compute a list of the top matching terms, in decreasing order of weight.</p>
-<p>The weights are calculated using various data, such as number of plays for movie streaming services, frequencies of search queries from other Google users, or the typing history of a smart phone user.</p>
-<p>In this assignment, we can use the rating data for each film, perhaps order the returned movies based on average rating in decreasing order.</p>
-<h2>Performance</h2>
-<p>Search performance is critical in many systems. For example, the Google search engine runs an autocomplete application and performs this search for every keystroke typed into the search bar and for every user! Therefore application has to return a list of suggestions in a short time for it to be useful to the user. 
-You are not required to provide this level of functionality but the performance/efficiency of your search algorithm will be considered in the marking scheme. </p>
-<p>Your submission should include a report on the efficiency of your search.</p>
 
       </div>
      
@@ -332,7 +328,7 @@ You are not required to provide this level of functionality but the performance/
 <p>All code should be internally documented and your repository should contain by a readme file that clearly and concisely explains the features of your program.
 <strong>Code that does not compile will not be graded</strong>. Before you push your assignment to Github, make sure there are no compile errors. </p>
 <h3>Submission to Github:</h3>
-<p>You should be commiting your changes regularly on Github. Your commit historiy is an indication of your incremental progression as you work through the assignment. 
+<p>You should be committing your changes regularly on Github. Your commit history is an indication of your incremental progression as you work through the assignment. 
 Also, you should push to your remote repository well before the submission deadline. Here are some steps that might help if you are having problems with pushing your project to Github. This assumes you are using the same repository you used in assignment 1.
 Follow the same procedure as in your previous assignment. If you are experiencing problems, check the following.</p>
 <ol>
@@ -342,7 +338,7 @@ Follow the same procedure as in your previous assignment. If you are experiencin
 <li><p>Select <em>Configure...</em> in the push results dialog
 <img src="./img/push_scr.png" alt="push to Upstream"></p>
 </li>
-<li><p>In the Configue Push dialog, click on <em>Change...</em>
+<li><p>In the Configure Push dialog, click on <em>Change...</em>
 <img src="./img/change.png" alt="push to Upstream"></p>
 </li>
 <li><p>In the Select a URI dialog, check the details are correct and <strong>re-enter your authentication details.</strong> Also, make sure the <em>Store in Secure Store</em> is ticked.
