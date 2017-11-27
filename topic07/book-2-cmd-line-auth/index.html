@@ -141,6 +141,10 @@ body
       Exercises
     </a>
     
+    <a class="item" data-tab="Exercises">
+      Exercises
+    </a>
+    
     <a class="item" href="../../index.html">
       <i class="home icon"></i>
     </a>
@@ -535,6 +539,16 @@ Run the existing PacemakerAPI and Persistence JUnit tests in the test package an
     }</code></pre>
 <p>Now run the test and check it passes...</p>
 <p><img src="./img/test.png" alt="Test login"></p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="Exercises">
+        <h2>Exercises</h2>
+<p>You will notice in the code that we are not checking for a authentication or authorisation in the API code. For example, in PacemakerAPI.java, we do not check if the role of the user before performing the deleteUser()</p>
+<ul>
+<li>Update the API such that only authenticated admin users can delete and add users</li>
+<li>Update your JUnit tests to test the previous exercise</li>
+</ul>
 
       </div>
      
