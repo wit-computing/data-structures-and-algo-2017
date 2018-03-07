@@ -108,29 +108,33 @@ body
   <header class="header item">
     <i id="toc" class="sitemap icon"></i>
     <a href="../index.html">
-      Assignments
+       Repeat Assignment
     </a>
   </header>
   <div class="right tab-menu menu">
     
-    <a class="item" data-tab="assignment-1">
-      assignment-1
+    <a class="item" data-tab="REPEAT-ASSIGNMENT">
+      REPEAT-ASSIGNMENT
     </a>
     
-    <a class="item" data-tab="Overview">
-      Overview
+    <a class="item" data-tab="01">
+      01
     </a>
     
-    <a class="item" data-tab="Movie Data">
-      Movie Data
+    <a class="item" data-tab="02">
+      02
     </a>
     
-    <a class="item" data-tab="Testing">
-      Testing
+    <a class="item" data-tab="03">
+      03
     </a>
     
-    <a class="item" data-tab="Submission and Testing">
-      Submission and Testing
+    <a class="item" data-tab="04">
+      04
+    </a>
+    
+    <a class="item" data-tab="06">
+      06
     </a>
     
     <div class="item">
@@ -192,7 +196,7 @@ body
       
     
       
-        <a class="active item" href="../../topic04/book-Assignment-01/index.html">
+        <a class="item" href="../../topic04/book-Assignment-01/index.html">
           assignment-1
         </a>
       
@@ -222,7 +226,7 @@ body
       
     
       
-        <a class="item" href="../../topic08/book-Repeat-Assignment-01/index.html">
+        <a class="active item" href="../../topic08/book-Repeat-Assignment-01/index.html">
           REPEAT-ASSIGNMENT
         </a>
       
@@ -232,77 +236,102 @@ body
     <div class="ui basic segment" id="labchat">
       <br>
       
-      <div  class="ui tab segment lab" data-tab="assignment-1">
-        <h1>Assignment 1</h1>
-<p>Many companies use recommender systems to suggest products, information, and friends to their customers .  In this assignment you will start develop a Movie recommender using existing movie data.</p>
+      <div  class="ui tab segment lab" data-tab="REPEAT-ASSIGNMENT">
+        <h1>Assignment 2</h1>
+<p>In this assignment you will develop a Book manager and recommender.</p>
 
       </div>
      
-      <div  class="ui tab segment lab" data-tab="Overview">
+      <div  class="ui tab segment lab" data-tab="01">
         <h2>Overview</h2>
-<p>Many companies use recommender systems to suggest products, information, and friends to their customers . These systems analyse usage patterns to suggest what a user would prefer from among a collection of things he has never experienced. For example, fig.1 shows Amazon’s recommendations based on a user’s activity (e.g. other movies they’ve rated etc.). 
-<img src="img/00.png" alt="Amazon Recommendations" title="Amazon Recommendations">
-Recommender systems are big business - recently  Netflix ran an open competition for a recommender algorithm. The winners prize was $1 million. In this assignment, you will develop the first part of a Movies recommender program. Unfortunately, there&#39;s no cash prize involved :( !</p>
+<p>Many companies use recommender systems to suggest products, information, and friends to their customers . These systems analyse usage patterns to suggest what a user would prefer from among a collection of things he has never experienced.
+<img src="img/00.png" alt="Amazon Recommendations" title="Book Recommendations">
+Recommender systems are big business - recently  Netflix ran an open competition for a recommender algorithm. The winners prize was $1 million. In this assignment, you will develop a similar recommender algorithm for Movies but, unfortunately, there&#39;s no cash prize involved.</p>
 <p>The main aims of this assignment is to write a Java program that can:</p>
 <ul>
-<li>Load existing movie, user and rating data into a Java program. </li>
+<li>Load existing book, user and rating data into a Java program. </li>
 <li>Develop a suitable data serializer.</li>
-<li>Create a suitable API to view and manipulate movie, user, and rating data.</li>
+<li>Create a suitable API to view and manipulate books, user, and rating data.</li>
+<li>Make movie recommendations for user.</li>
+<li>Provide unit testing which provides adequate code coverage and uses C.O.R.R.E.C.T. and Right B.I.C.E.P guidelines</li>
 </ul>
 
       </div>
      
-      <div  class="ui tab segment lab" data-tab="Movie Data">
-        <h2>Load intial Movie Data</h2>
-<p>You are provided with the following data adapted from <a href="https://movielens.org/">MovieLens</a>. You will need to examine the data files and read the README file to design and develop suitable abstract data types to represent the data in your Java program (hint: User, Movie and Rating classes). The Movielens files are in <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a>  text format - you will have to write your own code that can parse the Movielens data. 
-You will use the following two data sets; a large data set and a small data set. It might be more convenient to use the smaller data set in the early part of development, then move to the larger data set later on.
-<a href="data/moviedata_small.zip">small data set</a> .
-<a href="data/moviedata.zip">large data set</a> .</p>
-<p>The following code example uses <strong>java.util.Scanner</strong>  to read in a text file line by line, parse the data, and print the data to the standard output:</p>
-<pre><code class="lang-java">        String delims = &quot;[|]&quot;;
-        Scanner scanner = new Scanner(new File(&quot;./moviedata_small/users5.dat&quot;));
-        while (scanner.hasNextLine()) {
-            String userDetails = scanner.nextLine();
+      <div  class="ui tab segment lab" data-tab="02">
+        <h2>Book Data</h2>
+<p>You are provided with a small book data set. You will need to examine the data files and read the README file to design and develop suitable abstract data types  to represent the data in your Java program (hint: User, Book and Rating classes). The data files are in <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a>  text format - you will have to write your own code that can parse the Movielens data. 
+<a href="data/books_small.zip">small book data set</a> .</p>
+<p>The following code example uses ADTs from  <a href="http://introcs.cs.princeton.edu/java/stdlib/stdlib-package.jar">Stanford University&#39;s standard library</a>  to read in a text file line by line, parse the data, and print the data to the standard output  :</p>
+<pre><code>        File usersFile = new File(&quot;data/users.dat&quot;);
+        In inUsers = new In(usersFile);
+          //each field is separated(delimited) by a &#39;|&#39;
+        String delims = &quot;[|]&quot;;
+        while (!inUsers.isEmpty()) {
+            // get user and rating from data source
+            String userDetails = inUsers.readLine();
+
             // parse user details string
             String[] userTokens = userDetails.split(delims);
 
+            // output user data to console.
             if (userTokens.length == 7) {
-                System.out.println(&quot;UserID: &quot; + userTokens[0] + &quot;,First Name:&quot; + userTokens[1]);
-            } else {
-                scanner.close();
-                throw new IOException(&quot;Invalid member length: &quot; + userTokens.length);
+                System.out.println(&quot;UserID: &quot;+userTokens[0]+&quot;,First Name:&quot;+
+                        userTokens[1]+&quot;,Surname:&quot; + userTokens[2]+&quot;,Age:&quot;+
+                        Integer.parseInt(userTokens[3])+&quot;,Gender:&quot;+userTokens[4]+&quot;,Occupation:&quot;+
+                        userTokens[5]);
+
+            }else
+            {
+                throw new Exception(&quot;Invalid member length: &quot;+userTokens.length);
             }
-        }
-        scanner.close();</code></pre>
+        }</code></pre>
 <p>The above code produces output similar to the following:</p>
 <blockquote>
-<p>UserID: 1, First Name:Leonard 
-UserID: 2, First Name:Melody
-UserID: 3, First Name:Gregory
-UserID: 4, First Name:Oliver
-UserID: 5, First Name:Jenna</p>
+<p>UserID: 1, First Name:Leonard, Surname:Hernandez, Age:24, Gender:M, Occupation:technician
+UserID: 2, First Name:Melody, Surname:Roberson, Age:53, Gender:F, Occupation:other
+UserID: 3, First Name:Gregory, Surname:Newton, Age:23, Gender:M, Occupation:writer
+UserID: 4, First Name:Oliver, Surname:George, Age:24, Gender:M, Occupation:technician
+UserID: 5, First Name:Jenna, Surname:Parker, Age:33, Gender:F, Occupation:other</p>
 </blockquote>
-<p>You will also need to use suitable data structures that will support the functionality of the program.</p>
+<p>You will also need to use  suitable data structures that will support the functionality of the program.</p>
 <h2>Serializer</h2>
 <p>Develop a serializer that can serialize/deserialize all the data into a single file. You must use a well known external data format such as XML, JSON or both. </p>
 <h2>Recommender API</h2>
 <p>Develop a recommender api that provides <strong>at least</strong> the following interface description. The interface desciption is in the form <em>methodName(parameter list)</em>. The parameter list includes required parameters - you can include more if you wish.</p>
 <pre><code>addUser(firstName,lastName,age,gender,occupation)
 removeUser(userID)
-addMovie(title, year, url)
+addBook(title, year, url)
 addRating(userID, movieID, rating)
-getMovie(movieID)
+getBook(movieID)
 getUserRatings(userID)
-getMoviesByTitle()
-getMoviesByYear()
-initialLoad(csvFile)
+getUserRecommendations(userID)
+getTopFiveBooks()
 load()
 write()</code></pre>
-<p>A more precise description of the above API will follow and will be discussed in class.</p>
+<h2>Recommender Application</h2>
+<p>Use the api to develop an end user application. This can be a simple command line interface that allows a user to access the functionality in the Recommender API(e.g. list books, rate a movie, get movie details.) . One consideration here is to include a user login facility in the application.</p>
 
       </div>
      
-      <div  class="ui tab segment lab" data-tab="Testing">
+      <div  class="ui tab segment lab" data-tab="03">
+        <h2>Making recommendations</h2>
+<p>The following are two possible approaches for implementing the recommendation function.</p>
+<h3>Approach 1:</h3>
+<p>A simple approach would be to make almost the same prediction for every member. In this case the program would simply calculate the average rating for all the books in the database, sort the books by rating and then from that sorted list, suggest the top 5 books that the member hasn&#39;t already rated. With this simple approach, the only information unique to the member used by the prediction algorithm was whether or not the member had seen a book.</p>
+<h3>Approach 2:</h3>
+<p>A better prediction about what a member might like by considering his actual ratings in the past and how these ratings compare to the ratings given by other customers. Consider how you decide on book recommendations from friends. If a friend tells you about a number of books that s(he) enjoyed and you also enjoyed them, then when your friend recommends another book that you have never seen, you probably are willing to go see it. On the other hand, if you and a different friend always tend to disagree about books, you are not likely to go to see a book this friend recommends.
+A program can calculate how similar two users are by treating their ratings as a vector and calculating the dot product of these two vectors (the dot product is just the sum of the products of each of the corresponding elements.) For example, suppose we had 3 books in our database and Paddy rated them [5, 3,-5], Clodagh rated them [1, 5,-3], Ronan rated them [5, -3, 5], and Michael rated them [1, 3, 0]. </p>
+<blockquote>
+<p>The similarity between Paddy and Ronan is:      (5 x 5) + (3 x -3) + (-5 x 5) = 25 - 9 - 25 = -9. 
+The similarity between Paddy and Clodagh is: (5 x 1) + (3 x 5) + (-5 x -3) = 5 + 15 + 15 = 35. The similarity between Paddy and Michael is:    (5 x 1) + (3 x 3) + (-5 x 0) = 5 + 9 + 0 = 14. </p>
+</blockquote>
+<p>We see that if both people like a book (rating it with a positive number) it increases their similarity and if both people dislike a book (both giving it a negative number) it also increases their similarity.
+Once you have calculated the similarity between Paddy and every other customer, you can then identify whose ratings are most similar to Paddy&#39;s. In this case Clodagh is most similar to Paddy, so we would recommend to Paddy the top books from Clodagh&#39;s list that Paddy hadn&#39;t already rated.</p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="04">
         <h2>Testing</h2>
 <p>Approx 20% of marks in this assignment is for the testing strategy. You are required to provide the following:</p>
 <ul>
@@ -314,7 +343,7 @@ write()</code></pre>
 
       </div>
      
-      <div  class="ui tab segment lab" data-tab="Submission and Testing">
+      <div  class="ui tab segment lab" data-tab="06">
         <h2>Assignment Submission</h2>
 <p>Please submit assignment as a Github or Bitbucket repository. The following are expected to be included:</p>
 <ul>
@@ -322,20 +351,28 @@ write()</code></pre>
 <li>Comparisons</li>
 <li>Arrays/Lists/Maps of abstract data types     </li>
 <li>Modular programming</li>
-<li>use of standard libraries</li>
+<li>use of    standard libraries</li>
 <li>Reading from and writing to files</li>
 <li>Searching</li>
 <li>Sorting</li>
 </ul>
+<h3>Deadlines</h3>
+<p>There are two assignment submission deadlines: </p>
+<ul>
+<li>before 20th June (before Summer holidays)</li>
+</ul>
+<p>-31st August (after Summer holidays)</p>
+<p>You must submit before 1st Sept. and be present for a code review in the 1st week of Septmber. Alternatively, if you wish to submit and finish before the Summer, please contact me to arrange a code review.  However, You CANNOT submit twice (i.e. for both deadlines.)</p>
+<h3>Marking</h3>
 <p>All code should be internally documented and your repository should contain by a readme file that clearly and concisely explains the features of your program. General marking scheme, including above expectations, is as follows:</p>
 <blockquote>
 <p>Load External Data:        10;
-Serialiser/deserialiser:                20;
-Add/Remove Things:    15;
-Get top 10 Movies:        10;
-Sort movies by Name, Director, Year:  10
-Testing:        20.
-Code/repository quality: 15</p>
+Serialiser:                10;
+Add/Remove objects:    15;
+Get top 5 books:        10;
+Rate book:    10;
+Reccomendations:    25;
+Testing:        20.</p>
 </blockquote>
 
       </div>
